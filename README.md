@@ -7,7 +7,7 @@ The application has four main API endpoints, /api/users/register, /api/login, /a
 The /api/users/register endpoint allows users to register for the application. When a user registers, the function checks if the request body has all the mandatory fields. If it does, it uses the bcrypt package to hash the password and then stores the email, hashed password, and user name in the user model.
 
 The /api/login endpoint allows users to log in to the application. When a user logs in, the function checks if the request body has all the mandatory fields. If it does, it checks if the email and password match the document in the user model using bcrypt.compare method. If the email and password match, it uses the jwt package to create a token jwt.sign() it takes three arguments user object with id, name, and email, secret key and expiry for the token and then returns the token using res.json(token).
-
+ 
 The /api/users/current endpoint allows users to get their own user details. When a user makes a request to this endpoint, the function first checks the token validation. If the token validation is successful, it adds the req.user to the user object which gets from the jwt.verify method. Then, it separates the user object and returns it using res.json(user).
 
 The /api/contacts endpoint allows users to get, post, update, and delete contacts. When a user makes a request to any of these endpoints, the function first checks the token validation and adds req.user to the req object.
